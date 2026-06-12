@@ -13,26 +13,31 @@ export interface Project {
   writeup?: string;
 }
 
+// Repo links are placeholders pointing at the GitHub profile until Roy
+// confirms the exact repository URLs (B-07).
 export const projects: Project[] = [
   {
     name: 'QuantPulse',
-    // TODO:ROY one-liner, tech tags, repo link from content-sources/projects.md (B-07)
+    // TODO:ROY one-liner + tech tags from content-sources/projects.md (B-07)
     description: '',
     status: 'backtested',
     tags: [],
+    repo: 'https://github.com/royywn', // TODO:ROY replace with the QuantPulse repo URL
   },
   {
     name: 'Agentic coding framework',
-    // TODO:ROY one-liner, tech tags, repo link from content-sources/projects.md (B-07)
+    // TODO:ROY one-liner + tech tags from content-sources/projects.md (B-07)
     description: '',
     status: 'daily driver',
     tags: [],
+    repo: 'https://github.com/royywn', // TODO:ROY replace with the framework repo URL
   },
   {
     name: 'Local AI infrastructure',
-    // TODO:ROY one-liner, tech tags, repo link from content-sources/projects.md (B-07)
+    // TODO:ROY one-liner + tech tags from content-sources/projects.md (B-07)
     description: '',
     status: 'researching',
     tags: [],
+    repo: 'https://github.com/royywn', // TODO:ROY replace with the infra repo URL
   },
 ];

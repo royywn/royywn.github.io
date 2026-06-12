@@ -15,7 +15,12 @@ is a fine starting seed, but About page needs first-person voice and a photo dec
 Blocks: Phase 2 About page final copy.
 Meanwhile: build the page with TODO:ROY markers.
 
-## B-03 · 2026-06-12 · OPEN · CV PDF + final contact links
+## B-03 · 2026-06-12 · RESOLVED 2026-06-12 · CV PDF + final contact links
+Resolution: Roy dropped `public/Roy_Yang_CV.pdf`; LinkedIn = https://www.linkedin.com/in/roy-yangwn;
+public email = wingningyang@gmail.com. Roy also chose to remove the hero "my cv" and
+"github" buttons — CV download lives on /about, github link lives in the footer;
+hero actions are now linkedin · say hello (deviation from DESIGN.md zone 2 actions, Roy's call).
+Original request below.
 Needed: `public/Roy_Yang_CV.pdf` (current version), confirmed LinkedIn URL, public
 email address for the site (consider an alias rather than the personal gmail).
 Blocks: hero/footer links, Phase 2 verification.
@@ -46,3 +51,5 @@ Needed: `content-sources/projects.md` — per-project notes (what/why/stack/link
 QuantPulse, the agentic coding framework, and local AI infra (PLAN Phase 0 input).
 Blocks: Phase 2 projects page copy; Phase 1 proceeds with placeholder entries.
 Meanwhile: Phase 1 placeholders carry TODO:ROY markers and `draft: true`.
+Update (2026-06-12): per Roy, project repo links now point at https://github.com/royywn
+as placeholders. Still needed: per-project one-liners, tech tags, and the real repo URLs.

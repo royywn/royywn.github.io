@@ -57,10 +57,10 @@ passes. Tick boxes with a one-line note + commit hash.
       (08c03ed — svg monogram favicon, palette-matched og-image.png, og:image/twitter
       meta wired in Base.astro)
 - VERIFY: build passes; lychee on dist reports 0 broken internal links.
-  → PARTIAL 2026-06-12: build + check exit 0; lychee --offline on dist: 52 OK,
-  2 errors — both /Roy_Yang_CV.pdf (hero + about CV buttons), pending the PDF
-  drop per B-03. No other broken internal links. Re-run lychee after the PDF
-  lands to close this out.
+  → PASSED 2026-06-12: build + check exit 0; lychee --offline on dist: 53 OK,
+  0 errors. (Earlier partial run had 2 errors on /Roy_Yang_CV.pdf; closed when
+  Roy dropped the PDF and resolved B-03. Hero actions are now linkedin · say
+  hello per Roy — cv button moved to /about, github lives in the footer.)
 
 ## Phase 3 — Content systems
 - [ ] Blog index + [slug] pages + tag pages + RSS at /rss.xml
