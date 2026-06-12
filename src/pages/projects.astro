@@ -1,9 +1,36 @@
 ---
-// Phase 1 stub — typed project data arrives in Phase 2 (B-07 for source notes).
+// Projects index from the typed array in src/data/projects.ts (PLAN Phase 2).
+// One-liners, tags, and repo links pending content-sources/projects.md (B-07).
 import Base from '../layouts/Base.astro';
+import Badge from '../components/Badge.astro';
+import { projects } from '../data/projects';
 ---
 
-<Base title="projects · roy yang">
+<Base title="projects · roy yang" description="Things Roy Yang has built.">
   <h1>Projects</h1>
-  <!-- TODO:ROY project cards from content-sources/projects.md (PLAN Phase 2, BLOCKERS B-07) -->
+
+  <div class="card-grid">
+    {
+      projects.map((project) => (
+        <div class="card">
+          <Badge status={project.status} />
+          <h3 class="card-title">{project.name}</h3>
+          {project.description && <p class="card-description">{project.description}</p>}
+          {project.tags.length > 0 && <div class="card-tags">{project.tags.join(' · ')}</div>}
+          {project.repo && (
+            <p class="card-description">
+              <a href={project.repo}>repo</a>
+              {project.writeup && (
+                <>
+                  {' · '}
+                  <a href={project.writeup}>write-up</a>
+                </>
+              )}
+            </p>
+          )}
+        </div>
+      ))
+    }
+  </div>
+  <!-- TODO:ROY card one-liners, tech tags, repo links from content-sources/projects.md (BLOCKERS B-07) -->
 </Base>

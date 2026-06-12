@@ -1,9 +1,22 @@
 ---
-// Phase 1 stub — content arrives in Phase 2 from content-sources/bio.md (B-02).
+// About page (PLAN Phase 2). Narrative, skills, and timeline are sourced from
+// content-sources/bio.md and the CV — both pending (BLOCKERS B-02 / B-03);
+// structure ships now with TODO markers, never invented copy.
 import Base from '../layouts/Base.astro';
 ---
 
-<Base title="about · roy yang">
+<Base title="about · roy yang" description="About Roy Yang.">
   <h1>About</h1>
-  <!-- TODO:ROY about narrative from content-sources/bio.md (PLAN Phase 2, BLOCKERS B-02) -->
+
+  <!-- TODO:ROY professional narrative from content-sources/bio.md, first person (B-02) -->
+
+  <h2 class="section-label">skills</h2>
+  <!-- TODO:ROY skills grouped as on CV (B-02/B-03) -->
+
+  <h2 class="section-label">roles</h2>
+  <!-- TODO:ROY compact timeline of roles from CV (B-02/B-03) -->
+
+  <p class="actions">
+    <a class="btn btn-primary" href="/Roy_Yang_CV.pdf">download cv</a>
+  </p>
 </Base>
