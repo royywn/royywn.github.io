@@ -59,3 +59,12 @@ Blocks: Phase 2 projects page copy; Phase 1 proceeds with placeholder entries.
 Meanwhile: Phase 1 placeholders carry TODO:ROY markers and `draft: true`.
 Update (2026-06-12): per Roy, project repo links now point at https://github.com/royywn
 as placeholders. Still needed: per-project one-liners, tech tags, and the real repo URLs.
+
+## B-08 · 2026-06-12 · OPEN · Old MkDocs site: retain + banner, or retire?
+Needed: decision on the old book site (royywn.github.io/algotrading-strategy and its
+repo). PLAN Phase 6 says "redirect or banner pointing to new site (if old site
+retained)". Options: (a) keep it up with a banner linking here — agent can edit the
+mkdocs config in `~/Desktop/algotrading 2022/royywn/algotrading-strategy` once told
+to, (b) retire/archive the repo. ADR-005 found only 3 of 32 chapters had substance
+(now migrated as drafts), which argues for (b).
+Blocks: final Phase 6 item only.

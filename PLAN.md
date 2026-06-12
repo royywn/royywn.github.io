@@ -107,19 +107,33 @@ passes. Tick boxes with a one-line note + commit hash.
   (Page templates still carry TODO:ROY comments tracked by open blockers B-02/B-04/B-07.)
 
 ## Phase 5 — Deploy
-- [ ] `.github/workflows/deploy.yml` per ARCHITECTURE (check → build → pagefind →
+- [x] `.github/workflows/deploy.yml` per ARCHITECTURE (check → build → pagefind →
       lychee → deploy to Pages)
-- [ ] astro.config `site`/`base` set per ADR-002 decision
-- [ ] Production smoke test: fetch deployed homepage, /blog, /strategies, one post —
+      (ccd7d40 — pagefind runs via postbuild; configure-pages with enablement:true)
+- [x] astro.config `site`/`base` set per ADR-002 decision
+      (set since Phase 1 scaffold da69b4b; verified: site https://royywn.github.io, base '/')
+- [x] Production smoke test: fetch deployed homepage, /blog, /strategies, one post —
       all HTTP 200; OG tags present in HTML
+      (2026-06-12 — / /about /projects /blog /strategies /search /rss.xml CV PDF
+      og-image all 200; og:title/description/url/image present; 404 returns 404.
+      No individual post page exists in production yet — all content is draft:true
+      until B-05 — so "one post" is untestable until first publish.)
 - VERIFY: green Actions run on main; deployed URLs return 200.
+  → PASSED 2026-06-12: Actions run 27423132875 on ccd7d40 completed success
+  (convert, check, build, pagefind, lychee, deploy all green); live URLs return 200.
 
 ## Phase 6 — Polish (only after 0–5 complete)
-- [ ] Lighthouse CI: Performance ≥95, A11y ≥95 on /, one post, one strategy page
-- [ ] GoatCounter snippet (account id → BLOCKERS if absent)
-- [ ] Formspree contact form on /about (form id → BLOCKERS if absent)
+- [x] Lighthouse CI: Performance ≥95, A11y ≥95 on /, one post, one strategy page
+      (ADR-006 — 100/100 on / /blog/ /strategies/; post/strategy detail pages don't
+      exist in prod until B-05 publishes content — re-run then to fully satisfy)
+- [ ] GoatCounter snippet (account id → BLOCKERS if absent) — BLOCKED on B-06
+- [ ] Formspree contact form on /about (form id → BLOCKERS if absent) — BLOCKED on B-06
 - [ ] Redirect or banner on old MkDocs site pointing to new site (if old site retained)
+      — BLOCKED on B-08 (retain-vs-retire decision is Roy's)
 - VERIFY: lighthouse scores recorded in DECISIONS.md (ADR-006) with run date.
+  → DONE 2026-06-12 for what's verifiable: ADR-006 recorded (100/100 × 3 pages,
+  zero bundled JS, lychee 0 errors). Remaining Phase 6 items blocked on B-04
+  (giscus), B-06 (GoatCounter/Formspree), B-08 (old-site decision).
 
 ## Explicitly out of scope (do not build)
 Newsletter, CMS/admin UI, auth, server functions, comment systems other than giscus,

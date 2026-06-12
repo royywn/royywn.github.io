@@ -83,5 +83,21 @@ sketches, not as Roy's production code; real implementations arrive as notebooks
 pipeline); volume grows only with verified content. The old book can be retired
 after Phase 6 redirect/banner.
 
-## ADR-006 · _pending_ · Launch quality record
-_To be filled in Phase 6: Lighthouse scores, JS payload, link-check result, date._
+## ADR-006 · 2026-06-12 · accepted · Launch quality record
+**Run date:** 2026-06-12, against the live site (first production deploy,
+Actions run 27423132875, commit ccd7d40). Lighthouse 13.4 desktop preset,
+performance + accessibility categories.
+
+| Page | Performance | Accessibility |
+|---|---|---|
+| / | 100 | 100 |
+| /blog/ | 100 | 100 |
+| /strategies/ | 100 | 100 |
+
+Budgets (CLAUDE.md rule 7): Performance ≥95 ✓, Accessibility ≥95 ✓.
+**JS payload:** content pages ship zero bundled JS (`dist/_astro` contains no .js);
+only the inline theme-toggle snippet (<1 KB). Pagefind UI assets load on /search
+only, per ARCHITECTURE budget. **Link check:** lychee on dist in CI — 0 errors.
+**Caveat:** no individual post/strategy pages exist in production yet (all content
+draft:true pending B-05); re-run Lighthouse on one post + one strategy page after
+first real publish to complete the PLAN Phase 6 condition.
