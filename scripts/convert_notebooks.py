@@ -28,7 +28,6 @@ try:
     import nbformat
     import yaml
     from nbconvert import MarkdownExporter
-    from traitlets.config import Config
 except ImportError as exc:  # noqa: BLE001 - report the missing dependency clearly
     sys.exit(
         f"convert_notebooks: missing dependency ({exc}).\n"
@@ -174,11 +173,9 @@ def convert(notebook_path: Path, collection: str) -> list[str]:
     slug = slugify(notebook_path.stem)
     asset_dir_name = f"generated-{slug}"
 
-    config = Config()
-    config.MarkdownExporter.preprocessors = [
-        "nbconvert.preprocessors.ExtractOutputPreprocessor"
-    ]
-    exporter = MarkdownExporter(config=config)
+    # nbconvert 7's MarkdownExporter enables ExtractOutputPreprocessor by
+    # default — adding it again would process every output twice.
+    exporter = MarkdownExporter()
     body, resources = exporter.from_notebook_node(
         strip_cells(nb),
         resources={"output_files_dir": asset_dir_name, "unique_key": "output"},

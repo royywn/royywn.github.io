@@ -28,8 +28,11 @@ passes. Tick boxes with a one-line note + commit hash.
       routes for /, /about, /projects, /blog, /strategies so all nav targets render)
 - [x] One placeholder entry in each collection validates against schema
       (e2ce5b6 — draft:true placeholders, rendered in dev only, never in prod builds)
-- [ ] `scripts/convert_notebooks.py` + npm `convert`/`predev`/`prebuild` hooks;
+- [x] `scripts/convert_notebooks.py` + npm `convert`/`predev`/`prebuild` hooks;
       generated output gitignored; frontmatter raw-cell validation with clear errors
+      (4a5909e — generated-<slug>.md + asset dir match existing gitignore pattern, URL
+      slug kept clean via frontmatter slug override; bad-frontmatter path tested, exit 1
+      with field-level messages; venv-or-system-python shim in scripts/convert.sh)
 - [ ] Sample notebook in `notebooks/strategies/` (frontmatter cell + 1 plot output)
       converts and renders end-to-end
 - VERIFY: `npm run build && npx astro check` exit 0; dev server renders all nav
