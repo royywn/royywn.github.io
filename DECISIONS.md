@@ -60,8 +60,28 @@ post (error-prone, breaks the drop-and-push workflow); MDX islands per notebook
 **Consequences:** Publishing = save notebook, copy to folder, push. One-time
 converter cost paid in Phase 1; deterministic builds; no CI data dependencies.
 
-## ADR-005 · _pending_ · MkDocs chapter audit table
-_To be filled in Phase 4: chapter → keep/rewrite/drop → reason._
+## ADR-005 · 2026-06-12 · accepted · MkDocs chapter audit table
+**Context:** Phase 4 audit of the `algotrading-strategy` MkDocs book (source:
+`~/Desktop/algotrading 2022/royywn/algotrading-strategy/docs`). The nav lists 32
+chapters; only 8 markdown files exist on disk.
+
+| Chapter(s) | File state | Verdict | Reason |
+|---|---|---|---|
+| 7. ML Trading | 750 lines, 6 code blocks | **rewrite** | Substantive technique exposition, but generic AI-tutorial prose; no real backtest artifacts. Rewritten as draft strategy entry, results pending B-05. |
+| 8. Market Trend Decision | 471 lines, 7 code blocks | **rewrite** | Same: real technique content (trend classification across horizons), AI-tutorial tone, no artifacts. Rewritten as draft entry. |
+| 20. NSGA-III | 635 lines, 6 code blocks | **rewrite** | Most substantial chapter; multi-objective portfolio optimization with pymoo. Rewritten as draft entry. |
+| 1. Trend Trading | 28-line "coming soon" stub | **drop** | No content. |
+| Front matter (index, why-algo-trading, book-structure, target-audience) | exist | **drop** | Book marketing/meta, not strategy content; the new site's framing (ADR-004) replaces it. |
+| 2–6, 9–19, 21–32 (24 chapters) | files do not exist | **drop** | Nav entries only; nothing to migrate. |
+
+**Decision:** Migrate exactly 3 chapters (7, 8, 20) as rewritten `.md` strategy
+entries — first-person tone, honest status (`researching`), mandatory Limitations,
+`draft: true` until Roy confirms what was actually implemented and supplies real
+artifacts (BLOCKERS B-05). The book's AI-generated code is treated as illustrative
+sketches, not as Roy's production code; real implementations arrive as notebooks.
+**Consequences:** Strategies section starts honest and thin (3 drafts + sample
+pipeline); volume grows only with verified content. The old book can be retired
+after Phase 6 redirect/banner.
 
 ## ADR-006 · _pending_ · Launch quality record
 _To be filled in Phase 6: Lighthouse scores, JS payload, link-check result, date._
