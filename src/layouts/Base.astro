@@ -30,6 +30,12 @@ const ogImage = new URL('/og-image.png', Astro.site);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="roy yang — notes on markets, machine learning & ai agents"
+      href="/rss.xml"
+    />
     <script is:inline>
       // Apply the stored theme before first paint to avoid a flash of the
       // wrong palette; with no stored choice, CSS prefers-color-scheme rules.
