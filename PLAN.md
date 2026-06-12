@@ -83,18 +83,28 @@ passes. Tick boxes with a one-line note + commit hash.
   it surfaces.
 
 ## Phase 4 — Content migration & seed content
-- [ ] Audit existing MkDocs book: list chapters WITH real code/results vs boilerplate
+- [x] Audit existing MkDocs book: list chapters WITH real code/results vs boilerplate
       → write audit table into DECISIONS.md (ADR-005)
-- [ ] Migrate 3–5 strongest chapters: where a real notebook exists, place the .ipynb
+      (6de64ee — only 8 of 32 nav'd files exist; 3 substantive chapters → rewrite,
+      29 → drop; table in ADR-005)
+- [x] Migrate 3–5 strongest chapters: where a real notebook exists, place the .ipynb
       (with frontmatter cell) in notebooks/strategies/; otherwise rewrite as .md
       (tone per CLAUDE.md rules; add Limitations sections; no emoji; no invented results)
-- [ ] `royplot.mplstyle` in repo root per DESIGN.md imagery spec (warm white figure
+      (fb5d0e3 — no real notebooks existed; chapters 7/8/20 rewritten as draft .md
+      entries with Limitations + TODO:ROY result markers; stay draft until B-05)
+- [x] `royplot.mplstyle` in repo root per DESIGN.md imagery spec (warm white figure
       bg, palette-matched categorical cycle); referenced in KICKOFF notebook notes
-- [ ] Seed 2 blog posts from existing material Roy provides (e.g. look-ahead-bias
+      (a29bdaa — smoke-tested render; usage note added to KICKOFF.md)
+- [x] Seed 2 blog posts from existing material Roy provides (e.g. look-ahead-bias
       hunt write-up; agentic coding setup wizard) — drafts with TODO:ROY markers
       where facts are needed
+      (53eaf6b — no source material provided yet, so both are structured drafts in
+      Roy's voice with TODO:ROY markers for every factual claim)
 - VERIFY: every migrated page passes schema; zero TODO:ROY markers remain in
   files NOT marked `draft: true`.
+  → PASSED 2026-06-12: build + check exit 0 (zod schemas pass for all 7 content
+  files); all 7 content files containing TODO:ROY are draft: true, zero violations.
+  (Page templates still carry TODO:ROY comments tracked by open blockers B-02/B-04/B-07.)
 
 ## Phase 5 — Deploy
 - [ ] `.github/workflows/deploy.yml` per ARCHITECTURE (check → build → pagefind →

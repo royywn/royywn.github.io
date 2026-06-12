@@ -41,6 +41,12 @@ Blocks: comments mounting (Phase 3); everything else proceeds.
 Needed: for each migrated chapter, confirmation of what was actually implemented and
 any real backtest artifacts (charts/tables). The agent must not synthesize results.
 Blocks: Phase 4 publishing (entries stay `draft: true` until confirmed).
+Update (2026-06-12, Phase 4): three rewritten draft entries now exist
+(market-trend-detection, nsga3-portfolio-optimization, ml-classification-trading) —
+each has TODO:ROY markers for methodology confirmation and real results. To publish:
+confirm/correct the facts, attach real artifacts (ideally as notebooks in
+notebooks/strategies/ — see KICKOFF frontmatter template), set draft: false.
+Both seed blog posts (53eaf6b) need the same treatment.
 
 ## B-06 · 2026-06-12 · OPEN · GoatCounter + Formspree accounts
 Needed: GoatCounter site code; Formspree form id (both free tiers).
