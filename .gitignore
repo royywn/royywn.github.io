@@ -1,2 +1,8 @@
 content-sources/private/
 src/content/**/generated-*
+node_modules/
+dist/
+.astro/
+.DS_Store
+royywn-site-docs/
+*.code-workspace
