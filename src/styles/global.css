@@ -140,6 +140,42 @@ code, kbd, pre {
 
 code { font-size: 0.875em; }
 
+/* ---------- landing structure (DESIGN.md zones) ---------- */
+
+.hero {
+  max-width: 580px;
+  padding: 2.5rem 0 1.5rem;
+}
+
+.hero .eyebrow {
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  color: var(--text-muted);
+  margin: 2.5rem 0 1rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
 /* ---------- mono label — the signature: 12px, letter-spacing 0.05em, lowercase.
    Used for section labels, dates, tech tags, nav wordmark, footer. ---------- */
 

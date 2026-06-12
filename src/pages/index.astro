@@ -1,12 +1,70 @@
 ---
-// Phase 1 stub — the full DESIGN.md five-zone landing is built in Phase 2.
+// Landing per DESIGN.md five-zone spec; hero copy is approved — used verbatim.
 import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+import { getCollection } from 'astro:content';
+import { projects } from '../data/projects';
+
+const posts = (
+  await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft)
+)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
 ---
 
 <Base
   title="roy yang"
   description="Notes on markets, machine learning & AI agents."
 >
-  <!-- TODO:ROY landing page per DESIGN.md zone spec (PLAN Phase 2) -->
-  <p class="label-mono">notes on markets, machine learning &amp; ai agents</p>
+  <section class="hero">
+    <p class="label-mono eyebrow">notes on markets, machine learning &amp; ai agents</p>
+    <h1>Hi, I'm Roy.</h1>
+    <p>
+      I've spent 13 years working with data in banking and insurance — and I
+      still get a kick out of building things. Evenings and weekends, I tinker
+      with trading systems and AI agent tooling on my Mac.
+    </p>
+    <p>
+      This site is where I share what I'm building and what I learn along the
+      way — including the dead ends and the bugs that taught me the most.
+    </p>
+    <div class="actions">
+      <a class="btn btn-primary" href="/Roy_Yang_CV.pdf">my cv</a>
+      <a class="btn btn-secondary" href="https://github.com/royywn">github</a>
+      <!-- TODO:ROY linkedin + say hello buttons once URL and public email are confirmed (BLOCKERS B-03) -->
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-label">things i've built</h2>
+    <div class="card-grid">
+      {
+        projects.map((project) => (
+          <Card
+            title={project.name}
+            description={project.description}
+            href="/projects"
+            status={project.status}
+            tags={project.tags}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  {
+    posts.length > 0 && (
+      <section>
+        <h2 class="section-label">recent notes</h2>
+        {posts.map((post) => (
+          <div class="post-row">
+            <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+            <time datetime={post.data.date.toISOString()}>
+              {post.data.date.toISOString().slice(0, 10)}
+            </time>
+          </div>
+        ))}
+      </section>
+    )
+  }
 </Base>
