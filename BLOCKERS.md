@@ -22,6 +22,10 @@ Blocks: hero/footer links, Phase 2 verification.
 Agent note (2026-06-12, Phase 1): found `CV Roy Yang Data Scientist 2026.pdf` in the
 private `royywn-site-docs/` folder, but did not copy it to `public/` — publishing it
 is Roy's call (confirm it is the public version, then drop it in as Roy_Yang_CV.pdf).
+Agent note (2026-06-12, Phase 2): hero and about pages link "my cv"/"download cv" to
+/Roy_Yang_CV.pdf, which 404s until the PDF lands; the approved "linkedin" and
+"say hello" hero buttons are held as TODO:ROY comments until the URL and a public
+email are confirmed. These are the only items keeping Phase 2 verification partial.
 
 ## B-04 · 2026-06-12 · OPEN · giscus configuration
 Needed: enable GitHub Discussions on the site repo, then giscus repo-id/category-id

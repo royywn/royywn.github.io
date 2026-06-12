@@ -45,12 +45,22 @@ passes. Tick boxes with a one-line note + commit hash.
   /blog/placeholder-post/; notebook PNG served as valid 600×300 image via astro:assets.
 
 ## Phase 2 — Core pages
-- [ ] Landing page per DESIGN.md zone spec — use the approved hero copy verbatim
+- [x] Landing page per DESIGN.md zone spec — use the approved hero copy verbatim
       (eyebrow, "Hi, I'm Roy.", two paragraphs, four action buttons)
-- [ ] About page rendering content-sources/bio.md content (TODO markers if absent)
-- [ ] Projects page with typed project data (QuantPulse, Agentic framework, Local AI infra)
-- [ ] 404 page, robots.txt, favicon, og-image placeholder
+      (5ee1616 — hero copy verbatim; 2 of 4 action buttons live (my cv, github);
+      linkedin + say hello held as TODO:ROY pending B-03; card one-liners pending B-07)
+- [x] About page rendering content-sources/bio.md content (TODO markers if absent)
+      (655334a — bio.md absent (B-02): structure + TODO markers + CV button only)
+- [x] Projects page with typed project data (QuantPulse, Agentic framework, Local AI infra)
+      (655334a — typed array in src/data/projects.ts; descriptions/tags/repos TODO per B-07)
+- [x] 404 page, robots.txt, favicon, og-image placeholder
+      (08c03ed — svg monogram favicon, palette-matched og-image.png, og:image/twitter
+      meta wired in Base.astro)
 - VERIFY: build passes; lychee on dist reports 0 broken internal links.
+  → PARTIAL 2026-06-12: build + check exit 0; lychee --offline on dist: 52 OK,
+  2 errors — both /Roy_Yang_CV.pdf (hero + about CV buttons), pending the PDF
+  drop per B-03. No other broken internal links. Re-run lychee after the PDF
+  lands to close this out.
 
 ## Phase 3 — Content systems
 - [ ] Blog index + [slug] pages + tag pages + RSS at /rss.xml
