@@ -17,9 +17,11 @@ passes. Tick boxes with a one-line note + commit hash.
       now scaffolds Astro 5, off the fixed stack; sitemap pinned 3.2.1 for Astro 4 compat)
 - [x] Content collections defined in `src/content/config.ts` with zod schemas per ARCHITECTURE.md
       (c05793b — blog + strategies schemas exactly per ARCHITECTURE.md frontmatter specs)
-- [ ] DESIGN.md implemented: CSS variables (light + dark incl. honey accent flip),
+- [x] DESIGN.md implemented: CSS variables (light + dark incl. honey accent flip),
       @fontsource fonts (Source Serif 4, Inter, JetBrains Mono), base components
       (buttons, cards, badges) match the component specs
+      (d18c5b7 — tokens verbatim in src/styles/global.css; .btn/.card/.badge classes
+      + Badge.astro/Card.astro; fonts self-hosted, woff2 emitted in build)
 - [ ] Base.astro layout: nav (Home/About/Projects/Strategies/Blog), footer band
       per DESIGN.md, meta/OG tags, theme toggle
 - [ ] One placeholder entry in each collection validates against schema

@@ -1,0 +1,42 @@
+---
+// DESIGN.md zone 5 / footer spec: --band background, mono 11.5px,
+// copyright left / links right.
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="container inner">
+    <span>© {year} roy yang · toronto</span>
+    <span class="links">
+      <a href="https://github.com/royywn">github</a>
+      <span aria-hidden="true">·</span>
+      <!-- TODO:ROY linkedin link once URL confirmed (BLOCKERS B-03) -->
+      <a href="/rss.xml">rss</a>
+    </span>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: var(--band);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.05em;
+    text-transform: lowercase;
+    color: var(--text-2);
+  }
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 1.1rem;
+    padding-bottom: 1.1rem;
+  }
+  .links {
+    display: flex;
+    gap: 0.5rem;
+  }
+  a {
+    color: var(--text-2);
+  }
+</style>

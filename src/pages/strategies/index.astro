@@ -1,0 +1,32 @@
+---
+// Phase 1 minimal index — category grouping is PLAN Phase 3.
+// Drafts are visible in dev only, so placeholder content never ships.
+import Base from '../../layouts/Base.astro';
+import Badge from '../../components/Badge.astro';
+import { getCollection } from 'astro:content';
+
+const entries = (
+  await getCollection('strategies', ({ data }) => import.meta.env.DEV || !data.draft)
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Base
+  title="strategies · roy yang"
+  description="A working notebook of implemented and tested trading techniques."
+>
+  <h1>Strategies</h1>
+  {
+    entries.map((entry) => (
+      <div class="post-row">
+        <span>
+          <a href={`/strategies/${entry.slug}/`}>{entry.data.title}</a>
+          {' '}
+          <Badge status={entry.data.status} />
+        </span>
+        <time datetime={entry.data.date.toISOString()}>
+          {entry.data.date.toISOString().slice(0, 10)}
+        </time>
+      </div>
+    ))
+  }
+</Base>

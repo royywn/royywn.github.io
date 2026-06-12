@@ -1,0 +1,36 @@
+---
+// Toggle overrides prefers-color-scheme via data-theme on <html>;
+// the pre-paint script in Base.astro restores the stored choice.
+---
+
+<button id="theme-toggle" aria-label="toggle color theme">theme</button>
+
+<script>
+  const button = document.getElementById('theme-toggle');
+  button?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const current =
+      root.dataset.theme ??
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  });
+</script>
+
+<style>
+  button {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: lowercase;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  button:hover {
+    text-decoration: underline;
+  }
+</style>

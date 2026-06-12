@@ -1,0 +1,40 @@
+---
+// Phase 1 minimal entry page — the full Strategy layout (results block,
+// repo link styling) is PLAN Phase 3.
+import Base from '../../layouts/Base.astro';
+import Badge from '../../components/Badge.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection(
+    'strategies',
+    ({ data }) => import.meta.env.DEV || !data.draft
+  );
+  return entries.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Base title={`${entry.data.title} · roy yang`} description={entry.data.description}>
+  <article>
+    <p class="label-mono">
+      {entry.data.category} ·{' '}
+      <time datetime={entry.data.date.toISOString()}>
+        {entry.data.date.toISOString().slice(0, 10)}
+      </time>
+      {' '}
+      <Badge status={entry.data.status} />
+    </p>
+    <h1>{entry.data.title}</h1>
+    <Content />
+    {
+      entry.data.repo && (
+        <p>
+          <a href={entry.data.repo}>code on github</a>
+        </p>
+      )
+    }
+  </article>
+</Base>

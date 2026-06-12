@@ -1,0 +1,24 @@
+---
+// Phase 1 minimal index — full blog index (tags, RSS) is PLAN Phase 3.
+// Drafts are visible in dev only, so placeholder content never ships.
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (
+  await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft)
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Base title="blog · roy yang" description="Notes on markets, machine learning & AI agents.">
+  <h1>Blog</h1>
+  {
+    posts.map((post) => (
+      <div class="post-row">
+        <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+        <time datetime={post.data.date.toISOString()}>
+          {post.data.date.toISOString().slice(0, 10)}
+        </time>
+      </div>
+    ))
+  }
+</Base>

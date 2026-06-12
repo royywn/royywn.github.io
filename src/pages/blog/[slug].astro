@@ -1,0 +1,29 @@
+---
+// Phase 1 minimal post page — the full Post layout (reading time, TOC,
+// prev/next, giscus) is PLAN Phase 3.
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection(
+    'blog',
+    ({ data }) => import.meta.env.DEV || !data.draft
+  );
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Base title={`${post.data.title} · roy yang`} description={post.data.description}>
+  <article>
+    <p class="label-mono">
+      <time datetime={post.data.date.toISOString()}>
+        {post.data.date.toISOString().slice(0, 10)}
+      </time>
+    </p>
+    <h1>{post.data.title}</h1>
+    <Content />
+  </article>
+</Base>

@@ -1,0 +1,47 @@
+---
+// DESIGN.md zone 1: mono wordmark "roy yang" left;
+// about · projects · strategies · blog · theme toggle right.
+import ThemeToggle from './ThemeToggle.astro';
+---
+
+<header>
+  <nav class="container">
+    <a class="wordmark" href="/">roy yang</a>
+    <div class="links">
+      <a href="/about">about</a>
+      <a href="/projects">projects</a>
+      <a href="/strategies">strategies</a>
+      <a href="/blog">blog</a>
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>
+
+<style>
+  header {
+    border-bottom: 1px solid var(--hairline);
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .wordmark {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--text);
+  }
+  .links {
+    display: flex;
+    gap: 1.1rem;
+    align-items: baseline;
+  }
+  .links a {
+    font-size: 14px;
+    color: var(--text-2);
+  }
+</style>
