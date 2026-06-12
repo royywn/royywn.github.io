@@ -1,0 +1,40 @@
+---
+// Pagefind search (ADR-003). The index and UI assets are produced by the
+// postbuild step, so search only works on built output (`npm run preview`)
+// — in `npm run dev` the assets 404 and the page shows a note instead.
+// Pagefind UI JS/CSS load on this page only (ARCHITECTURE.md JS budget).
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="search · roy yang" description="Search the site.">
+  <h1>Search</h1>
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <div id="search"></div>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.PagefindUI) {
+        new window.PagefindUI({ element: '#search', showSubResults: true });
+      } else {
+        document.getElementById('search').textContent =
+          'Search index is built at build time — run npm run build && npm run preview.';
+      }
+    });
+  </script>
+</Base>
+
+<style is:global>
+  /* Map Pagefind UI onto the DESIGN.md tokens */
+  #search {
+    --pagefind-ui-scale: 0.85;
+    --pagefind-ui-primary: var(--accent);
+    --pagefind-ui-text: var(--text-2);
+    --pagefind-ui-background: var(--surface);
+    --pagefind-ui-border: var(--card-border);
+    --pagefind-ui-tag: var(--band);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 8px;
+    --pagefind-ui-image-border-radius: 8px;
+    --pagefind-ui-font: 'Inter Variable', Inter, system-ui, sans-serif;
+  }
+</style>
