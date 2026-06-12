@@ -63,13 +63,24 @@ passes. Tick boxes with a one-line note + commit hash.
   hello per Roy — cv button moved to /about, github lives in the footer.)
 
 ## Phase 3 — Content systems
-- [ ] Blog index + [slug] pages + tag pages + RSS at /rss.xml
-- [ ] Strategy index (grouped by category) + [slug] pages with status badge
-- [ ] Post layout: reading time, conditional TOC, prev/next, giscus mount point
+- [x] Blog index + [slug] pages + tag pages + RSS at /rss.xml
+      (630031a — tag pages at /blog/tags/[tag]; rss alternate link in head; footer
+      rss link stays out per Roy's earlier edit)
+- [x] Strategy index (grouped by category) + [slug] pages with status badge
+      (a8ad810 — fixed category order trend/mean reversion/optimization/risk/infra,
+      empty groups hidden; [slug] badge shipped in Phase 1)
+- [x] Post layout: reading time, conditional TOC, prev/next, giscus mount point
       (giscus repo config → BLOCKERS if not yet provided)
-- [ ] Pagefind integrated; /search page works on built output
+      (abc53fe — TOC when >800 words; giscus script gated on IDs still pending B-04)
+- [x] Pagefind integrated; /search page works on built output
+      (24569b3 — postbuild `pagefind --site dist`; UI assets load on /search only)
 - VERIFY: build passes; rss.xml validates; pagefind index returns results for a
   known term in `npm run preview`.
+  → PASSED 2026-06-12: build + check exit 0; dist/rss.xml well-formed (xmllint) with
+  valid channel; pagefind query "QuantPulse" returned 2 results (top hit /projects/)
+  against `npm run preview`; lychee on dist: 69 OK, 0 errors. Note: /search is not
+  linked from the nav (DESIGN.md nav list has no search entry) — Roy to decide where
+  it surfaces.
 
 ## Phase 4 — Content migration & seed content
 - [ ] Audit existing MkDocs book: list chapters WITH real code/results vs boilerplate
