@@ -26,7 +26,8 @@ passes. Tick boxes with a one-line note + commit hash.
       per DESIGN.md, meta/OG tags, theme toggle
       (a6e693c — wordmark=home; linkedin footer link held for B-03; minimal stub
       routes for /, /about, /projects, /blog, /strategies so all nav targets render)
-- [ ] One placeholder entry in each collection validates against schema
+- [x] One placeholder entry in each collection validates against schema
+      (e2ce5b6 — draft:true placeholders, rendered in dev only, never in prod builds)
 - [ ] `scripts/convert_notebooks.py` + npm `convert`/`predev`/`prebuild` hooks;
       generated output gitignored; frontmatter raw-cell validation with clear errors
 - [ ] Sample notebook in `notebooks/strategies/` (frontmatter cell + 1 plot output)

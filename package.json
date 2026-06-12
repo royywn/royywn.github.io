@@ -4,7 +4,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "convert": "sh scripts/convert.sh",
+    "predev": "npm run convert",
     "dev": "astro dev",
+    "prebuild": "npm run convert",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check"
