@@ -1,0 +1,23 @@
+---
+// Card per DESIGN.md component spec: badge, title (14–15px/500),
+// 1–2 line description, mono tech-tag line.
+import Badge from './Badge.astro';
+import type { BadgeStatus } from './Badge.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  status?: BadgeStatus;
+  tags?: string[];
+}
+
+const { title, description, href, status, tags } = Astro.props;
+---
+
+<a class="card" href={href}>
+  {status && <Badge status={status} />}
+  <h3 class="card-title">{title}</h3>
+  <p class="card-description">{description}</p>
+  {tags && tags.length > 0 && <div class="card-tags">{tags.join(' · ')}</div>}
+</a>

@@ -1,0 +1,240 @@
+/* Self-hosted fonts via @fontsource (DESIGN.md do-not list: no runtime Google CDN).
+   Source Serif 4 only at 500 (headings); Inter variable 400/500; JetBrains Mono 400/500. */
+@import '@fontsource/source-serif-4/500.css';
+@import '@fontsource-variable/inter';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+/* DESIGN.md tokens — implemented literally. Light is default; dark applies via
+   prefers-color-scheme, with an explicit data-theme override from the toggle. */
+
+:root {
+  --bg:            #FBFBF8;   /* page background, warm off-white */
+  --surface:       #FFFFFE;   /* cards */
+  --band:          #E9EEEB;   /* footer band, soft sage block */
+  --text:          #2F3A33;   /* headings/body strong — green-charcoal */
+  --text-2:        #565B53;   /* body */
+  --text-muted:    #9C8C79;   /* taupe — labels, dates, tags */
+  --hairline:      #DDE3DF;   /* dividers */
+  --card-border:   #D6DEDA;   /* pale sage */
+  --btn-border:    #C9BBA9;   /* taupe outline buttons */
+  --accent:        #41604F;   /* forest green — primary buttons, links, eyebrow */
+  --accent-text:   #E9F0EC;   /* text on accent */
+  --badge-green-bg:#E4ECE7;  --badge-green-fg:#2C4438;   /* status: backtested/validated */
+  --badge-honey-bg:#FFEFC4;  --badge-honey-fg:#6B5210;   /* status: daily driver / live */
+  --badge-taupe-bg:#EDE3D8;  --badge-taupe-fg:#5F4C38;   /* status: researching / idea */
+}
+
+/* Dark tokens appear twice (toggle override + OS preference) because CSS custom
+   properties cannot be aliased across selectors without a preprocessor.
+   Keep both blocks identical. Badge pairs intentionally keep the light-mode
+   values — they read as chips and remain legible on dark surfaces. */
+:root[data-theme='dark'] {
+  --bg:            #20261F;   /* deep green-charcoal, NOT pure black */
+  --surface:       #2A3128;
+  --band:          #262D25;
+  --text:          #E4E8E1;
+  --text-2:        #B9C0B6;
+  --text-muted:    #A89682;
+  --hairline:      #394137;
+  --card-border:   #394137;
+  --btn-border:    #5A5247;
+  --accent:        #FFCF5C;   /* accent FLIPS to honey in dark mode */
+  --accent-text:   #3A2D08;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg:            #20261F;
+    --surface:       #2A3128;
+    --band:          #262D25;
+    --text:          #E4E8E1;
+    --text-2:        #B9C0B6;
+    --text-muted:    #A89682;
+    --hairline:      #394137;
+    --card-border:   #394137;
+    --btn-border:    #5A5247;
+    --accent:        #FFCF5C;
+    --accent-text:   #3A2D08;
+  }
+}
+
+/* ---------- base typography (DESIGN.md: body 16px/1.65; h1 32, h2 24, h3 18;
+   serif headings at weight 500; never bold above 500; no italics outside
+   blockquotes) ---------- */
+
+html {
+  background: var(--bg);
+  color: var(--text-2);
+  font-family: 'Inter Variable', Inter, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+h1 { font-size: 32px; }
+h2 { font-size: 24px; }
+h3 { font-size: 18px; }
+
+strong, b { font-weight: 500; color: var(--text); }
+
+blockquote {
+  font-style: italic;
+  color: var(--text-2);
+  border-left: 2px solid var(--hairline);
+  margin-left: 0;
+  padding-left: 1rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+/* Hover affordance: underline or border-color shift only (DESIGN.md) */
+a:hover { text-decoration: underline; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--hairline);
+}
+
+code, kbd, pre {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+code { font-size: 0.875em; }
+
+/* ---------- mono label — the signature: 12px, letter-spacing 0.05em, lowercase.
+   Used for section labels, dates, tech tags, nav wordmark, footer. ---------- */
+
+.label-mono {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  color: var(--text-muted);
+}
+
+/* ---------- buttons: 13px, 7px 14px padding, radius 8px.
+   One filled element per view: the primary CTA. ---------- */
+
+.btn {
+  display: inline-block;
+  font-family: 'Inter Variable', Inter, system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn:hover { text-decoration: none; }
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+.btn-primary:hover { filter: brightness(1.08); }
+
+.btn-secondary {
+  background: transparent;
+  border-color: var(--btn-border);
+  color: var(--text);
+}
+.btn-secondary:hover { border-color: var(--text-muted); }
+
+/* ---------- cards: surface bg, 1px card border, radius 12px, 16px padding.
+   Hover: border-color shift only — no lifts, no shadows, no scale. ---------- */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 16px;
+}
+a.card:hover, .card:has(a:hover) { border-color: var(--text-muted); }
+a.card:hover { text-decoration: none; }
+
+/* a card used as a block link must not inherit the accent link color */
+a.card {
+  display: block;
+  color: var(--text-2);
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  margin: 10px 0 4px;
+}
+
+.card-description {
+  font-size: 14px;
+  color: var(--text-2);
+  margin: 0 0 10px;
+}
+
+.card-tags {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  color: var(--text-muted);
+}
+
+/* ---------- status badge: mono 11px, 3px 9px padding, radius 8px, lowercase.
+   The only place semantic color appears; mapping is fixed (DESIGN.md). ---------- */
+
+.badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 400;
+  padding: 3px 9px;
+  border-radius: 8px;
+  text-transform: lowercase;
+}
+
+.badge-green { background: var(--badge-green-bg); color: var(--badge-green-fg); }
+.badge-honey { background: var(--badge-honey-bg); color: var(--badge-honey-fg); }
+.badge-taupe { background: var(--badge-taupe-bg); color: var(--badge-taupe-fg); }
+
+/* ---------- recent-posts rows: plain rows, title left, mono date right,
+   hairline separators. Never cards, never thumbnails. ---------- */
+
+.post-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.post-row time {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}

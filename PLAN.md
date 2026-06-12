@@ -15,7 +15,8 @@ passes. Tick boxes with a one-line note + commit hash.
 - [x] `npm create astro@latest` minimal template; add tailwind, sitemap, rss integrations
       (da69b4b — hand-written minimal template pinned to astro@^4 since create-astro@latest
       now scaffolds Astro 5, off the fixed stack; sitemap pinned 3.2.1 for Astro 4 compat)
-- [ ] Content collections defined in `src/content/config.ts` with zod schemas per ARCHITECTURE.md
+- [x] Content collections defined in `src/content/config.ts` with zod schemas per ARCHITECTURE.md
+      (c05793b — blog + strategies schemas exactly per ARCHITECTURE.md frontmatter specs)
 - [ ] DESIGN.md implemented: CSS variables (light + dark incl. honey accent flip),
       @fontsource fonts (Source Serif 4, Inter, JetBrains Mono), base components
       (buttons, cards, badges) match the component specs

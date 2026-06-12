@@ -1,0 +1,29 @@
+---
+// Status badge — the only place semantic color appears (DESIGN.md color rule 3).
+// Fixed mapping: green = validated (backtested), honey = in active use
+// (daily driver / live / paper-trading), taupe = in progress (researching / idea).
+export type BadgeStatus =
+  | 'idea'
+  | 'researching'
+  | 'backtested'
+  | 'paper-trading'
+  | 'daily driver'
+  | 'live';
+
+interface Props {
+  status: BadgeStatus;
+}
+
+const { status } = Astro.props;
+
+const colorClass: Record<BadgeStatus, string> = {
+  backtested: 'badge-green',
+  'daily driver': 'badge-honey',
+  live: 'badge-honey',
+  'paper-trading': 'badge-honey',
+  researching: 'badge-taupe',
+  idea: 'badge-taupe',
+};
+---
+
+<span class={`badge ${colorClass[status]}`}>{status}</span>
