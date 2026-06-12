@@ -33,11 +33,16 @@ passes. Tick boxes with a one-line note + commit hash.
       (4a5909e — generated-<slug>.md + asset dir match existing gitignore pattern, URL
       slug kept clean via frontmatter slug override; bad-frontmatter path tested, exit 1
       with field-level messages; venv-or-system-python shim in scripts/convert.sh)
-- [ ] Sample notebook in `notebooks/strategies/` (frontmatter cell + 1 plot output)
+- [x] Sample notebook in `notebooks/strategies/` (frontmatter cell + 1 plot output)
       converts and renders end-to-end
+      (78e8dfa — sample-pipeline.ipynb, draft:true, saved sine-plot output; HIDE and
+      empty cells stripped in output)
 - VERIFY: `npm run build && npx astro check` exit 0; dev server renders all nav
   routes INCLUDING the page generated from the sample notebook; image from the
   notebook displays correctly.
+  → PASSED 2026-06-12: build + check exit 0 (0 errors/warnings); dev server returned
+  200 for / /about /projects /blog /strategies /strategies/sample-pipeline/
+  /blog/placeholder-post/; notebook PNG served as valid 600×300 image via astro:assets.
 
 ## Phase 2 — Core pages
 - [ ] Landing page per DESIGN.md zone spec — use the approved hero copy verbatim
