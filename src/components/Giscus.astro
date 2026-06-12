@@ -1,0 +1,33 @@
+---
+// giscus comments mount point (ADR-003). The script only loads once the
+// repo/category IDs from giscus.app are filled in — pending BLOCKERS B-04
+// (GitHub Discussions must be enabled on the repo first).
+const GISCUS_REPO = ''; // TODO:ROY e.g. "royywn/royywn.github.io" (B-04)
+const GISCUS_REPO_ID = ''; // TODO:ROY from giscus.app (B-04)
+const GISCUS_CATEGORY = ''; // TODO:ROY discussion category name (B-04)
+const GISCUS_CATEGORY_ID = ''; // TODO:ROY from giscus.app (B-04)
+
+const configured = GISCUS_REPO && GISCUS_REPO_ID && GISCUS_CATEGORY && GISCUS_CATEGORY_ID;
+---
+
+<section id="comments" aria-label="comments">
+  {
+    configured && (
+      <script
+        is:inline
+        src="https://giscus.app/client.js"
+        data-repo={GISCUS_REPO}
+        data-repo-id={GISCUS_REPO_ID}
+        data-category={GISCUS_CATEGORY}
+        data-category-id={GISCUS_CATEGORY_ID}
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async
+      />
+    )
+  }
+</section>

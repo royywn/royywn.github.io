@@ -1,0 +1,110 @@
+---
+// Blog post layout (ARCHITECTURE.md): reading time, TOC for >800 words,
+// tags, giscus at the bottom, prev/next.
+import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
+import Base from './Base.astro';
+import Giscus from '../components/Giscus.astro';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  headings: MarkdownHeading[];
+  prev?: CollectionEntry<'blog'>;
+  next?: CollectionEntry<'blog'>;
+}
+
+const { post, headings, prev, next } = Astro.props;
+
+const words = post.body.split(/\s+/).filter(Boolean).length;
+const readingTime = Math.max(1, Math.round(words / 200));
+const showToc = words > 800;
+const tocHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const isoDate = post.data.date.toISOString();
+---
+
+<Base title={`${post.data.title} · roy yang`} description={post.data.description}>
+  <article>
+    <header>
+      <p class="label-mono">
+        <time datetime={isoDate}>{isoDate.slice(0, 10)}</time>
+        {' · '}{readingTime} min read
+      </p>
+      <h1>{post.data.title}</h1>
+      {
+        post.data.tags.length > 0 && (
+          <p class="card-tags">
+            {post.data.tags.map((tag, i) => (
+              <>
+                {i > 0 && ' · '}
+                <a href={`/blog/tags/${tag}/`}>{tag}</a>
+              </>
+            ))}
+          </p>
+        )
+      }
+    </header>
+
+    {
+      showToc && tocHeadings.length > 0 && (
+        <nav class="toc" aria-label="table of contents">
+          <p class="label-mono">contents</p>
+          <ul>
+            {tocHeadings.map((heading) => (
+              <li class={`toc-depth-${heading.depth}`}>
+                <a href={`#${heading.slug}`}>{heading.text}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    <slot />
+
+    <nav class="post-nav" aria-label="more posts">
+      {
+        prev ? (
+          <a href={`/blog/${prev.slug}/`}>← {prev.data.title}</a>
+        ) : (
+          <span />
+        )
+      }
+      {next && <a href={`/blog/${next.slug}/`}>{next.data.title} →</a>}
+    </nav>
+
+    <Giscus />
+  </article>
+</Base>
+
+<style>
+  .toc {
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin: 1.5rem 0;
+  }
+  .toc ul {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+  }
+  .toc li {
+    font-size: 14px;
+    padding: 2px 0;
+  }
+  .toc-depth-3 {
+    padding-left: 1rem;
+  }
+  .post-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 2.5rem 0 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--hairline);
+    font-size: 14px;
+  }
+  .card-tags a {
+    color: var(--text-muted);
+  }
+</style>

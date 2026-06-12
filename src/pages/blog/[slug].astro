@@ -1,29 +1,27 @@
 ---
-// Phase 1 minimal post page — the full Post layout (reading time, TOC,
-// prev/next, giscus) is PLAN Phase 3.
-import Base from '../../layouts/Base.astro';
+// Blog post pages, rendered through the Post layout (PLAN Phase 3).
+import Post from '../../layouts/Post.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const posts = await getCollection(
-    'blog',
-    ({ data }) => import.meta.env.DEV || !data.draft
-  );
-  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+  const posts = (
+    await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft)
+  ).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+
+  return posts.map((post, index) => ({
+    params: { slug: post.slug },
+    props: {
+      post,
+      prev: index > 0 ? posts[index - 1] : undefined,
+      next: index < posts.length - 1 ? posts[index + 1] : undefined,
+    },
+  }));
 }
 
-const { post } = Astro.props;
-const { Content } = await post.render();
+const { post, prev, next } = Astro.props;
+const { Content, headings } = await post.render();
 ---
 
-<Base title={`${post.data.title} · roy yang`} description={post.data.description}>
-  <article>
-    <p class="label-mono">
-      <time datetime={post.data.date.toISOString()}>
-        {post.data.date.toISOString().slice(0, 10)}
-      </time>
-    </p>
-    <h1>{post.data.title}</h1>
-    <Content />
-  </article>
-</Base>
+<Post post={post} headings={headings} prev={prev} next={next}>
+  <Content />
+</Post>
