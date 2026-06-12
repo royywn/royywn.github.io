@@ -6,3 +6,4 @@ dist/
 .DS_Store
 royywn-site-docs/
 *.code-workspace
+.venv/
