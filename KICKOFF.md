@@ -90,6 +90,10 @@ draft: false
 Cells tagged `# HIDE` (first line of a code cell) are stripped at publish time —
 use for data paths, keys, and setup noise.
 
+Figures: start notebooks with `plt.style.use("<path-to-repo>/royplot.mplstyle")`
+(in a `# HIDE` cell is fine) so every published chart matches the site palette
+automatically — warm white background, forest/honey/sage/taupe line colors.
+
 ## Publishing loop after launch (the whole point)
 save notebook → copy/update into notebooks/... → `git add -A && git commit -m
 "content: <title>" && git push` → live in ~2 minutes. Writing a plain markdown

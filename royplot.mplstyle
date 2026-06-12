@@ -1,0 +1,41 @@
+# royplot.mplstyle — matplotlib style matching the site palette (DESIGN.md imagery).
+# Usage in notebooks: plt.style.use("royplot.mplstyle")  (path relative to repo root)
+# Warm white figure bg, green-charcoal text, forest/honey/sage/taupe categorical cycle.
+
+figure.facecolor: FBFBF8
+figure.edgecolor: FBFBF8
+savefig.facecolor: FBFBF8
+savefig.edgecolor: FBFBF8
+savefig.dpi: 150
+figure.dpi: 100
+figure.figsize: 8, 4.5
+
+axes.facecolor: FBFBF8
+axes.edgecolor: DDE3DF
+axes.labelcolor: 2F3A33
+axes.titlecolor: 2F3A33
+axes.titlesize: 13
+axes.labelsize: 11
+axes.spines.top: False
+axes.spines.right: False
+axes.grid: True
+# categorical cycle: forest green, honey, mid sage, taupe, then darker support tones
+axes.prop_cycle: cycler('color', ['41604F', 'FFCF5C', '7E9889', '9C8C79', '2C4438', '6B5210'])
+
+grid.color: DDE3DF
+grid.linewidth: 0.6
+grid.alpha: 0.8
+
+lines.linewidth: 1.8
+
+text.color: 2F3A33
+xtick.color: 565B53
+ytick.color: 565B53
+xtick.labelsize: 10
+ytick.labelsize: 10
+
+legend.frameon: False
+legend.fontsize: 10
+
+font.family: monospace
+font.monospace: JetBrains Mono, Menlo, DejaVu Sans Mono
