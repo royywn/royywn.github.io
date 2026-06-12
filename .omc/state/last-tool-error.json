@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"cat /Users/ry/royywn.github.io/.gitignore; echo ---; ls -R /Users/ry/royywn.github.io/content-sources /Users/ry/royywn.github.io/notebooks /Users/ry/royywn.github.io/scripts /Users/ry/royy...",
-  "error": "Exit code 1\ncontent-sources/private/\nsrc/content/**/generated-*\n---\n/Users/ry/royywn.github.io/content-sources:\nprivate\n\n/Users/ry/royywn.github.io/content-sources/private:\n\n/Users/ry/royywn.github.io/notebooks:\nblog\nstrategies\n\n/Users/ry/royywn.github.io/notebooks/blog:\n\n/Users/ry/royywn.github.io/notebooks/strategies:\n\n/Users/ry/royywn.github.io/public:\n\n/Users/ry/royywn.github.io/scripts:\n---\nv24.2.0\n11.3.0\nPython 3.14.0\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module...",
-  "timestamp": "2026-06-12T04:38:49.234Z",
-  "retry_count": 1
-}

@@ -7,3 +7,4 @@ dist/
 royywn-site-docs/
 *.code-workspace
 .venv/
+.omc/
