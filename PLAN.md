@@ -22,8 +22,10 @@ passes. Tick boxes with a one-line note + commit hash.
       (buttons, cards, badges) match the component specs
       (d18c5b7 — tokens verbatim in src/styles/global.css; .btn/.card/.badge classes
       + Badge.astro/Card.astro; fonts self-hosted, woff2 emitted in build)
-- [ ] Base.astro layout: nav (Home/About/Projects/Strategies/Blog), footer band
+- [x] Base.astro layout: nav (Home/About/Projects/Strategies/Blog), footer band
       per DESIGN.md, meta/OG tags, theme toggle
+      (a6e693c — wordmark=home; linkedin footer link held for B-03; minimal stub
+      routes for /, /about, /projects, /blog, /strategies so all nav targets render)
 - [ ] One placeholder entry in each collection validates against schema
 - [ ] `scripts/convert_notebooks.py` + npm `convert`/`predev`/`prebuild` hooks;
       generated output gitignored; frontmatter raw-cell validation with clear errors
