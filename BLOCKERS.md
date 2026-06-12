@@ -19,6 +19,9 @@ Meanwhile: build the page with TODO:ROY markers.
 Needed: `public/Roy_Yang_CV.pdf` (current version), confirmed LinkedIn URL, public
 email address for the site (consider an alias rather than the personal gmail).
 Blocks: hero/footer links, Phase 2 verification.
+Agent note (2026-06-12, Phase 1): found `CV Roy Yang Data Scientist 2026.pdf` in the
+private `royywn-site-docs/` folder, but did not copy it to `public/` — publishing it
+is Roy's call (confirm it is the public version, then drop it in as Roy_Yang_CV.pdf).
 
 ## B-04 · 2026-06-12 · OPEN · giscus configuration
 Needed: enable GitHub Discussions on the site repo, then giscus repo-id/category-id
@@ -33,3 +36,9 @@ Blocks: Phase 4 publishing (entries stay `draft: true` until confirmed).
 ## B-06 · 2026-06-12 · OPEN · GoatCounter + Formspree accounts
 Needed: GoatCounter site code; Formspree form id (both free tiers).
 Blocks: Phase 6 only.
+
+## B-07 · 2026-06-12 · OPEN · Project notes source material
+Needed: `content-sources/projects.md` — per-project notes (what/why/stack/links) for
+QuantPulse, the agentic coding framework, and local AI infra (PLAN Phase 0 input).
+Blocks: Phase 2 projects page copy; Phase 1 proceeds with placeholder entries.
+Meanwhile: Phase 1 placeholders carry TODO:ROY markers and `draft: true`.
